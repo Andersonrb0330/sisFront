@@ -118,7 +118,7 @@ export class RegistrarAlumnoComponent implements OnInit {
       () => {
         this.alumnoService.update(this.alumnoId, alumno).subscribe(() => {
           console.log('Alumno actualizado correctamente:');
-          this.router.navigate(['/alumno']);
+          this.router.navigate(['dashboard/alumno']);
         });
       }
     );
@@ -133,7 +133,7 @@ export class RegistrarAlumnoComponent implements OnInit {
           .create(alumno)
           .subscribe((resultado: AlumnoModel) => {
             console.log('Alumno guardado correctamente:', resultado);
-            this.router.navigate(['/alumno']);
+            this.router.navigate(['dashboard/alumno']);
           });
       }
     );

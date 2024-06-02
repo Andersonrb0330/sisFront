@@ -1,11 +1,32 @@
-/* Estilos para el dashboard */
 .dashboard-container {
   display: flex;
+  flex-direction: column;
+  height: 100; /* Cambiando a height en lugar de min-height */
   background: linear-gradient(#130a11, #091b27, #130a11);
+}
+
+h1 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 10px 20px;
+  border-bottom: 2px solid black;
+  background: linear-gradient(#130a11, #091b27, #130a11);
+}
+.dashboard-title {
+  font-weight: bold;
+}
+
+.dashboard-content {
+  display: flex;
+  flex: 1;
 }
 
 .content {
   flex: 1; /* Para que ocupe el espacio restante */
-  background-color: #f0f0f0; /* Nuevo color de fondo del contenido */
-  color: #000; /* Nuevo color de texto en el contenido */
 }

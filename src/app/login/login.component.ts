@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         alert('Email o Contraseña Incorrectas');
       } else {
         this.seguridadModel = respuesta;
-        alert('Correcto');
+        this.router.navigate(['/dashboard/alumno']);
       }
     });
   }

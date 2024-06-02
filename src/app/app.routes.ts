@@ -12,7 +12,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirecciona al login por defecto
 
-  //////////////////
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -25,12 +24,8 @@ export const routes: Routes = [
   },
   { path: 'registrar-alumno', component: RegistrarAlumnoComponent },
   { path: 'registrar-alumno/:id', component: RegistrarAlumnoComponent },
-
-  //////////////////
   { path: 'registrar-aula', component: RegistrarAulaComponent },
   { path: 'registrar-aula/:id', component: RegistrarAulaComponent },
-
-  //////////////////
   { path: 'registrar-categoria', component: RegistrarCategoriaComponent },
   { path: 'registrar-categoria/:id', component: RegistrarCategoriaComponent },
 ];

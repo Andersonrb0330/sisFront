@@ -1,7 +1,10 @@
 .sidebar {
-  width: 200px; /* Ancho de la barra lateral */
+  width: 250px;
+  background: linear-gradient(#130a11, #091b27, #130a11);
   color: #fff; /* Color de texto en la barra lateral */
   font-family: "Times New Roman", Times, serif;
+  padding: 2px;
+  height: calc(100vh - 62px); /* Adjust based on header height */
 }
 
 .sidebar-menu {
@@ -13,13 +16,6 @@
   padding: 10px;
 }
 
-.sidebar-menu li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px; /* Tamaño de fuente más grande */
-  padding: 15px 20px; /* Aumentar el relleno para áreas de clic más grandes */
-}
-
 .sidebar-menu li:hover {
   background-color: rgba(
     255,
@@ -28,4 +24,17 @@
     0.1
   ); /* Color de fondo al pasar el mouse */
   cursor: pointer; /* Cambia el cursor a una mano */
+}
+
+.sidebar-menu li a i {
+  margin-right: 10px;
+}
+
+.sidebar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px; /* Tamaño de fuente más grande */
+  display: flex;
+  align-items: center;
+  padding: 10px 10px; /* Aumentar el relleno para áreas de clic más grandes */
 }

@@ -1,0 +1,31 @@
+.sidebar {
+  width: 200px; /* Ancho de la barra lateral */
+  color: #fff; /* Color de texto en la barra lateral */
+  font-family: "Times New Roman", Times, serif;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  padding: 10px;
+}
+
+.sidebar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px; /* Tamaño de fuente más grande */
+  padding: 15px 20px; /* Aumentar el relleno para áreas de clic más grandes */
+}
+
+.sidebar-menu li:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Color de fondo al pasar el mouse */
+  cursor: pointer; /* Cambia el cursor a una mano */
+}

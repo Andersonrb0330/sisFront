@@ -1,0 +1,90 @@
+/* alumno-register.component.css */
+body {
+  min-height: 100vh; /* Set the minimum height of the body to 100% of the visible height */
+  margin: 0;
+  padding: 0;
+  font-family: Times New Roman, Times, serif;
+  background: linear-gradient(#30142b, #2772a1, #30142b);
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+h3 {
+  color: white;
+}
+.error {
+  color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.custom-form {
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.custom-label {
+  font-weight: bold;
+  color: white;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
+  color: white;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+}
+
+.btn-success,
+.btn-limpiar,
+.btn-registrar,
+.btn-back {
+  background: linear-gradient(#30142b, #5261e0);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-success:hover,
+.btn-limpiar:hover,
+.btn-registrar:hover,
+.btn-back:hover {
+  background: linear-gradient(#8f227b, #284f68);
+}
+
+.input-group .form-control {
+  margin-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group .toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.toggle-password:hover {
+  color: #b236d8;
+}
+
+.table {
+  width: 100%; /* Full width to occupy the entire container */
+}

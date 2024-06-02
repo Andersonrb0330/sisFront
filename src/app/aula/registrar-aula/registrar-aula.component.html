@@ -1,0 +1,32 @@
+<body>
+    <div class="container">
+        <!-- Botón de regresar -->
+        <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-back" (click)="navigateToAula()">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Registrar Aula</h2>
+                <form [formGroup]="aulaFormulario" (ngSubmit)="registrarAula()" class="custom-form">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label custom-label"
+                            [class.error]="aulaFormulario.get('nombre')?.invalid && aulaFormulario.get('nombre')?.touched">Nombre:</label>
+                        <input type="text" class="form-control custom-input" id="nombre" formControlName="nombre" />
+                        <div *ngIf="aulaFormulario.get('nombre')?.invalid && aulaFormulario.get('nombre')?.touched"
+                            class="error-message">Nombre requerido</div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="reset" class="btn btn-limpiar">
+                            <i class="bi bi-x-circle-fill"></i> Limpiar
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-person-plus-fill"></i> Registrar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

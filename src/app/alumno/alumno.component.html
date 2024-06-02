@@ -1,0 +1,114 @@
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <form [formGroup]="AlumnoFormulario" class="custom-form">
+                    <fieldset>
+                        <legend class="form-title">Filtros</legend>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nombres" class="form-label custom-label">Nombre:</label>
+                                <input type="text" class="form-control custom-input" id="nombres"
+                                    formControlName="nombres" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="apellidos" class="form-label custom-label">Apellidos:</label>
+                                <input type="text" class="form-control custom-input" id="apellidos"
+                                    formControlName="apellidos" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="idAula" class="form-label custom-label">Aula:</label>
+                                <select class="form-select custom-select" id="idAula" formControlName="idAula">
+                                    <option value="">Selecciona..</option>
+                                    <option *ngFor="let aula of aulaModel" [value]="aula.id">{{ aula.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="idCategoria" class="form-label custom-label">Categoría:</label>
+                                <select class="form-select custom-select" id="idCategoria"
+                                    formControlName="idCategoria">
+                                    <option value="">Selecciona..</option>
+                                    <option *ngFor="let categoria of categoriaModel" [value]="categoria.id">{{
+                                        categoria.nombre }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <button type="reset" class="btn btn-limpiar mx-2" (click)="limpiarFiltros()">
+                                    <i class="bi bi-brush"></i>Limpiar</button>
+                                <button type="submit" class="btn btn-buscar mx-2" (click)="buscarAlumnos()">
+                                    <i class="bi bi-search"></i>Buscar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Alumnos</h2>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-success mb-3" (click)="navigateToRegistrarAlumno()">
+                    <i class="bi bi-plus-lg"></i> Agregar Alumno
+                </button>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Aula</th>
+                            <th scope="col">Categoría</th>
+                            <th scope="col">Actualizar</th>
+                            <th scope="col">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngIf="alumnoModel.length > 0; else noData">
+                            <tr *ngFor="let alumno of alumnoModel">
+                                <td>{{ alumno.id }}</td>
+                                <td>{{ alumno.nombres }}</td>
+                                <td>{{ alumno.apellidos }}</td>
+                                <td>{{ alumno.telefono }}</td>
+                                <td>{{ alumno.edad }}</td>
+                                <td>{{ alumno.aula?.nombre }}</td>
+                                <td>{{ alumno.categoria?.nombre }}</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-sm"
+                                        (click)="navigateToActualizarAlumno(alumno.id)">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        (click)="deleteAlumno(alumno.id)">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <ng-template #noData>
+                            <tr>
+                                <td colspan="9" class="text-center">No se encontraron alumnos que coincidan con los
+                                    filtros aplicados.</td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="paginator-container">
+            <mat-paginator [length]="totalItems" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements" (page)="buscarAlumnos($event)"></mat-paginator>
+        </div>
+    </div>
+
+    <app-confirmation #confirmModal></app-confirmation>
+</body>

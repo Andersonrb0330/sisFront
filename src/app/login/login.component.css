@@ -1,0 +1,87 @@
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Times New Roman, Times, serif;
+  background: linear-gradient(#30142b, #2772a1, #30142b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 400px;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.7);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.card-body {
+  padding: 40px;
+}
+
+.card-title {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background-color: transparent;
+}
+
+.form-label {
+  color: white;
+  font-weight: bold;
+}
+
+.btn-success {
+  background: linear-gradient(#30142b, #2772a1);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-success:hover {
+  background: linear-gradient(#8f227b, #284f68);
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-group .form-control {
+  margin-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group .toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.toggle-password:hover {
+  color: #b236d8;
+}

@@ -1,0 +1,17 @@
+<ng-template #content let-modal>
+    <div class="modal-header ">
+        <h2 class="modal-title">{{ titulo }}</h2>
+    </div>
+    <div class="modal-body text-center">
+        <h3 class="letra">{{ mensaje }}</h3>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelar(modal)">
+                <i class="bi bi-x"></i>
+            </button>
+            <button type="button" class="btn btn-primary" (click)="confirmar(modal)">
+                <i class="bi bi-check-lg"></i>
+            </button>
+        </div>
+    </div>
+
+</ng-template>

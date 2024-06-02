@@ -1,0 +1,28 @@
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">LOGUEO</h2>
+                <form [formGroup]="formulario" (ngSubmit)="Login()" class="login-form">
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-bold">Usuario:</label>
+                        <input type="text" class="form-control" formControlName="email" id="email" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label fw-bold">Contraseña:</label>
+                        <div class="input-group">
+                            <input [type]="hidePassword ? 'password' : 'text'" class="form-control"
+                                formControlName="password" id="password" />
+                            <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+                                <i class="bi" [ngClass]="hidePassword ? 'bi-eye' : 'bi-eye-slash'"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

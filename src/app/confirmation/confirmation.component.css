@@ -1,0 +1,14 @@
+.modal-header {
+  background: linear-gradient(#30142b, #2772a1, #30142b);
+  color: white;
+}
+.modal-title,
+.letra {
+  font-family: Times New Roman, Times, serif;
+}
+
+.btn-primary,
+.btn-secondary {
+  color: #fff;
+  background: linear-gradient(#30142b, #2772a1);
+}

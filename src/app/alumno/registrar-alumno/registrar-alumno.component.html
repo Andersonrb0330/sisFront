@@ -1,0 +1,88 @@
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <!-- Back Button -->
+                <div class="d-flex justify-content-start mb-3">
+                    <button class="btn btn-back" (click)="navigateToAlumno()">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+                </div>
+                <form [formGroup]="alumnoFormulario" (ngSubmit)="registrarAlumno()" class="custom-form">
+                    <fieldset>
+                        <legend>
+                            <h3>Registrar Alumno</h3>
+                        </legend>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nombres" class="form-label custom-label"
+                                    [class.error]="alumnoFormulario.get('nombres')?.invalid && alumnoFormulario.get('nombres')?.touched">Nombres:</label>
+                                <input type="text" class="form-control custom-input" id="nombres"
+                                    formControlName="nombres" />
+                                <div *ngIf="alumnoFormulario.get('nombres')?.invalid && alumnoFormulario.get('nombres')?.touched"
+                                    class="error-message">Nombres requerido</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="apellidos" class="form-label custom-label"
+                                    [class.error]="alumnoFormulario.get('apellidos')?.invalid && alumnoFormulario.get('apellidos')?.touched">Apellidos:</label>
+                                <input type="text" class="form-control custom-input" id="apellidos"
+                                    formControlName="apellidos" />
+                                <div *ngIf="alumnoFormulario.get('apellidos')?.invalid && alumnoFormulario.get('apellidos')?.touched"
+                                    class="error-message">Apellidos requeridos</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telefono" class="form-label custom-label"
+                                    [class.error]="alumnoFormulario.get('telefono')?.invalid && alumnoFormulario.get('telefono')?.touched">Teléfono:</label>
+                                <input type="text" class="form-control custom-input" id="telefono"
+                                    formControlName="telefono" pattern="[0-9]*" maxlength="9" />
+                                <div *ngIf="alumnoFormulario.get('telefono')?.invalid && alumnoFormulario.get('telefono')?.touched"
+                                    class="error-message">Teléfono inválido</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edad" class="form-label custom-label"
+                                    [class.error]="alumnoFormulario.get('edad')?.invalid && alumnoFormulario.get('edad')?.touched">Edad:</label>
+                                <input type="number" class="form-control custom-input" id="edad" formControlName="edad"
+                                    min="0" max="99" />
+                                <div *ngIf="alumnoFormulario.get('edad')?.invalid && alumnoFormulario.get('edad')?.touched"
+                                    class="error-message">Edad inválida</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="idAula" class="form-label custom-label"
+                                    [class.error]="alumnoFormulario.get('idAula')?.invalid && alumnoFormulario.get('idAula')?.touched">Aula:</label>
+                                <select class="form-select custom-select" id="aula" formControlName="idAula">
+                                    <option value="">Selecciona..</option>
+                                    <option *ngFor="let aula of aulaModel" [value]="aula.id">{{ aula.nombre }}</option>
+                                </select>
+                                <div *ngIf="alumnoFormulario.get('idAula')?.invalid && alumnoFormulario.get('idAula')?.touched"
+                                    class="error-message">Aula requerida</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="idCategoria" class="form-label custom-label"
+                                    [class.error]="alumnoFormulario.get('idCategoria')?.invalid && alumnoFormulario.get('idCategoria')?.touched">Categoría:</label>
+                                <select class="form-select custom-select" id="idCategoria"
+                                    formControlName="idCategoria">
+                                    <option value="">Selecciona..</option>
+                                    <option *ngFor="let categoria of categoriaModel" [value]="categoria.id">{{
+                                        categoria.nombre }}</option>
+                                </select>
+                                <div *ngIf="alumnoFormulario.get('idCategoria')?.invalid && alumnoFormulario.get('idCategoria')?.touched"
+                                    class="error-message">Categoría requerida</div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <button type="reset" class="btn btn-limpiar mx-2">
+                                    <i class="bi bi-x-circle-fill"></i> Limpiar
+                                </button>
+                                <button type="submit" class="btn btn-registrar mx-2">
+                                    <i class="bi bi-person-plus-fill"></i> Registrar
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <app-confirmation #confirmModal></app-confirmation>
+</body>

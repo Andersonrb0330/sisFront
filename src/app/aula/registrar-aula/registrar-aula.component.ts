@@ -82,7 +82,7 @@ export class RegistrarAulaComponent implements OnInit {
       () => {
         this.aulaService.update(this.aulaId, aula).subscribe(() => {
           console.log('Aula actualizado correctamente:');
-          this.router.navigate(['/aula']);
+          this.router.navigate(['dashboard/aula']);
         });
       }
     );
@@ -95,7 +95,7 @@ export class RegistrarAulaComponent implements OnInit {
       () => {
         this.aulaService.create(aula).subscribe((resultado: AulaModel) => {
           console.log('Aula guardado correctamente:', resultado);
-          this.router.navigate(['/aula']);
+          this.router.navigate(['dashboard/aula']);
         });
       }
     );

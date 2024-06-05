@@ -10,4 +10,8 @@ export class LoginService {
   private urlApi = 'http://localhost:5198/api/login';
 
   constructor(private http: HttpClient) {}
+
+  public getAll(): Observable<LoginModel[]> {
+    return this.http.get<LoginModel[]>(this.urlApi);
+  }
 }

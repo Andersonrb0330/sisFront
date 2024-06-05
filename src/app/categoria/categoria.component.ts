@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   imports: [CommonModule, ConfirmationComponent],
 })
 export class CategoriaComponent {
-  categoriaModel!: CategoriaModel[];
+  categoriaModel: CategoriaModel[] = [];
 
   @ViewChild('confirmModal', { static: false })
   confirmModal!: ConfirmationComponent;

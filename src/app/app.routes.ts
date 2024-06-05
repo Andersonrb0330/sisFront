@@ -7,6 +7,7 @@ import { AlumnoComponent } from './alumno/alumno.component';
 import { RegistrarAulaComponent } from './aula/registrar-aula/registrar-aula.component';
 import { RegistrarCategoriaComponent } from './categoria/registrar-categoria/registrar-categoria.component';
 import { RegistrarAlumnoComponent } from './alumno/registrar-alumno/registrar-alumno.component';
+import { MatriculaComponent } from './matricula/matricula.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,4 +29,5 @@ export const routes: Routes = [
   { path: 'registrar-aula/:id', component: RegistrarAulaComponent },
   { path: 'registrar-categoria', component: RegistrarCategoriaComponent },
   { path: 'registrar-categoria/:id', component: RegistrarCategoriaComponent },
+  { path: 'matricula', component: MatriculaComponent },
 ];

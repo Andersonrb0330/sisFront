@@ -5,7 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ConfirmationComponent } from '../../confirmation/confirmation.component';
+import { ConfirmationComponent } from '../../confirmation/confirmation.component'; // Asegúrate de que la ruta sea correcta
 import { CategoriaService } from '../../service/categoria.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaModel } from '../../../models/categoria.model';
@@ -14,13 +14,13 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-registrar-categoria',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ConfirmationComponent],
   templateUrl: './registrar-categoria.component.html',
   styleUrl: './registrar-categoria.component.css',
 })
 export class RegistrarCategoriaComponent implements OnInit {
   categoriaFormulario!: FormGroup;
-  aulaId!: number;
+  categoriaId!: number;
 
   @ViewChild('confirmModal', { static: false })
   confirmModal!: ConfirmationComponent;
@@ -34,9 +34,9 @@ export class RegistrarCategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.crearFormulario();
-    this.aulaId = this.activatedRoute.snapshot.params['id'];
-    if (this.aulaId) {
-      this.obtenerAula();
+    this.categoriaId = this.activatedRoute.snapshot.params['id'];
+    if (this.categoriaId) {
+      this.obtenerCategoria();
     }
   }
 
@@ -46,29 +46,26 @@ export class RegistrarCategoriaComponent implements OnInit {
     });
   }
 
-  //////////////// OBTENER A UN ALUMNO PARA ACTUALIZAR ////////////////////////////////////////
-  obtenerAula() {
+  obtenerCategoria() {
     this.categoriaService
-      .getById(this.aulaId)
+      .getById(this.categoriaId)
       .subscribe((resultado: CategoriaModel) => {
         this.cargarInformacionActualizar(resultado);
       });
   }
 
-  //////////////// REGISTRAR A UN ALUMNO //////////////////////////////////////
   registrarCategoria() {
     if (this.categoriaFormulario.valid) {
       const categoria: CategoriaModel = {
-        id: this.aulaId || 0,
+        id: this.categoriaId || 0,
         nombre: this.categoriaFormulario.get('nombre')?.value,
       };
-      if (this.aulaId) {
+      if (this.categoriaId) {
         this.modalUpdate(categoria);
       } else {
         this.modalCreate(categoria);
       }
     } else {
-      // Verificar si los controles existen antes de acceder a las propiedades
       Object.values(this.categoriaFormulario.controls).forEach((control) => {
         if (control) {
           control.markAsTouched();
@@ -78,19 +75,23 @@ export class RegistrarCategoriaComponent implements OnInit {
   }
 
   modalUpdate(categoria: CategoriaModel) {
-    this.confirmModal.openModal(
-      'Actualizar Categoria',
-      '¿Está seguro de actualizar Categoria?',
-      () => {
-        this.categoriaService.update(this.aulaId, categoria).subscribe(() => {
-          console.log('Categoria actualizado correctamente:');
-          this.router.navigate(['/aula']);
-        });
-      }
-    );
+    if (this.confirmModal) {
+      this.confirmModal.openModal(
+        'Actualizar Categoria',
+        '¿Está seguro de actualizar Categoria?',
+        () => {
+          this.categoriaService
+            .update(this.categoriaId, categoria)
+            .subscribe(() => {
+              console.log('Categoria actualizado correctamente:');
+              this.router.navigate(['dashboard/categoria']);
+            });
+        }
+      );
+    }
   }
 
-  modalCreate(categoria: CategoriaModel) {
+  modalCreate(categoria: any) {
     this.confirmModal.openModal(
       'Crear Categoria',
       '¿Está seguro de crear una Categoria?',
@@ -98,15 +99,14 @@ export class RegistrarCategoriaComponent implements OnInit {
         this.categoriaService
           .create(categoria)
           .subscribe((resultado: CategoriaModel) => {
-            console.log('Categoria guardado correctamente:', resultado);
-            this.router.navigate(['/categoria']);
+            console.log('Categoria guardada correctamente', resultado);
+            this.router.navigate(['dashboard/categoria']);
           });
       }
     );
   }
-
   cargarInformacionActualizar(categoria: CategoriaModel): void {
-    this.categoriaFormulario.patchValue({ ['nombre']: categoria.nombre });
+    this.categoriaFormulario.patchValue({ nombre: categoria.nombre });
   }
 
   navigateToCategoria() {

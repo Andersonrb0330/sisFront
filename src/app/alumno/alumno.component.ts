@@ -34,6 +34,7 @@ export class AlumnoComponent implements OnInit {
   alumnoModel: AlumnoModel[] = [];
   aulaModel: AulaModel[] = [];
   categoriaModel: CategoriaModel[] = [];
+
   totalItems: number = 0;
   limiteActual: number = 5;
   paginaActual: number = 0;

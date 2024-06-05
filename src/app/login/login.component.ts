@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
+      // email: [{ value: 'lil@gmail.com', disabled: true }],
       email: [''],
       password: [''],
     });
@@ -38,10 +39,14 @@ export class LoginComponent implements OnInit {
   Login() {
     const datos = this.formulario.value;
     const loginModel: LoginModel = {
+      id: datos.id,
       email: datos.email,
       password: datos.password,
     };
-
+    // const loginModel: LoginModel = {
+    //   email: this.formulario.get('email')!.value,
+    //   password: this.formulario.get('password')!.value,
+    // };
     this.seguridadService.logueo(loginModel).subscribe((respuesta) => {
       if (respuesta == null) {
         alert('Email o Contraseña Incorrectas');
